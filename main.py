@@ -7,7 +7,7 @@ import os
 from dotenv import load_dotenv ## added
 
 load_dotenv()
-
+print("AIPIPE_TOKEN:", os.getenv("AIPIPE_TOKEN"))
 AIPIPE_TOKEN = os.getenv("AIPIPE_TOKEN")
 AIPIPE_URL = "https://aipipe.org/openrouter/v1/chat/completions"
 IMAGE_FILE_PATH = "uploaded_image.webp" # File to temporarily save the image
