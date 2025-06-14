@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List, Dict
 import base64
@@ -13,6 +14,14 @@ AIPIPE_URL = "https://aipipe.org/openrouter/v1/chat/completions"
 IMAGE_FILE_PATH = "uploaded_image.webp" # File to temporarily save the image
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # You can restrict to your frontend domain later
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class QARequest(BaseModel):
     question: str
